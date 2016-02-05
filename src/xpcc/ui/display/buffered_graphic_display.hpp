@@ -88,8 +88,8 @@ namespace xpcc
 
 	protected:
 		// Faster version adapted for the RAM buffer
-		virtual void
-		drawHorizontalLine(glcd::Point start, uint16_t length);
+		//virtual void
+		//drawHorizontalLine(glcd::Point start, uint16_t length);
 
 		// TODO Faster version adapted for the RAM buffer
 		//virtual void

@@ -48,6 +48,7 @@ xpcc::BufferedGraphicDisplay<Width, Height>::clear()
 }
 
 // ----------------------------------------------------------------------------
+/*
 template <uint16_t Width, uint16_t Height>
 void
 xpcc::BufferedGraphicDisplay<Width, Height>::drawHorizontalLine(
@@ -74,6 +75,7 @@ xpcc::BufferedGraphicDisplay<Width, Height>::drawHorizontalLine(
 		}
 	}
 }
+*/
 
 // ----------------------------------------------------------------------------
 template <uint16_t Width, uint16_t Height>
@@ -96,8 +98,12 @@ xpcc::BufferedGraphicDisplay<Width, Height>::drawImageRaw(glcd::Point upperLeft,
 					uint16_t x = upperLeft.getX() + i;
 					uint16_t y = k + row;
 
-					if( x < Width && y < Height ) {
-						this->buffer[x][y] = data[i + k * width];
+					if (x < Width && y < Height) {
+						if (this->draw == &xpcc::BufferedGraphicDisplay<Width, Height>::setPixel) {
+							this->buffer[x][y] |= data[i + k * width];
+						} else {
+							this->buffer[x][y] &= ~data[i + k * width];
+						}
 					}
 				}
 			}
