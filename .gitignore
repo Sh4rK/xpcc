@@ -8,6 +8,7 @@
 build/
 .idea/
 .vagrant/
+.vscode/
 
 # Directories containing device specific files generated from templates
 # xpcc_config.hpp is generated from a template file
