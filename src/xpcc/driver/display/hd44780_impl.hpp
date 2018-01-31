@@ -42,9 +42,9 @@ xpcc::Hd44780<DATA, RW, RS, E>::setCursor(uint8_t column, uint8_t line)
 	this->column = (column <= this->lineWidth ? column : this->lineWidth);
 	this->line   = (line   <= this->lineCount ? line   : this->lineCount);
 
-	uint8_t address = this->column + 0x40 * this->line;
+	uint8_t address = this->column + 0x40 * (this->line % 2);
 	if (this->line >= 2) {
-		address += 20;
+		address += 16;
 	}
 	while(!driver::writeAddress(address))
 		;
